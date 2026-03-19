@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesorios | URBANSTYLE IT CORE</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/LogoTienda.png" alt="UrbanStyle IT Core" class="logo-img">
+            </a>
+            
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="hombre.html" class="nav-link">Hombre</a></li>
+                    <li><a href="mujer.html" class="nav-link">Mujer</a></li>
+                    <li><a href="accesorios.html" class="nav-link" style="color: var(--accent-color);">Accesorios</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-icons">
+                <div class="cart-container" style="position: relative;">
+                    <a href="#" class="cart-icon" id="cart-toggle">
+                        🛒
+                        <span class="cart-badge" id="cart-count">0</span>
+                    </a>
+                    
+                    <div class="cart-dropdown" id="cart-dropdown">
+                        <div class="cart-items" id="cart-items-list">
+                            <p class="empty-msg">SYSTEM_EMPTY...</p>
+                        </div>
+                        
+                        <div class="cart-footer">
+                            <div class="cart-total-row">
+                                <span>TOTAL:</span>
+                                <span id="cart-total-price">0.00€</span>
+                            </div>
+                            <button id="checkout-btn" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                                PROCESAR COMPRA
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero internal-hero">
+            <div class="hero-content">
+                <h1>Módulos <span>Add-ons_v1</span></h1>
+                <p>Complementos de hardware para ampliar tu funcionalidad diaria.</p>
+            </div>
+        </section>
+
+        <section class="section-padding container">
+            <h2 class="section-title"><span>ACCESORIOS HOMBRE</span></h2>
+            <div class="product-grid">
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/Harperbeltblack_DROP3_1.jpg" alt="Harper Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/Harper_belt_black_DROP3_3.jpg" alt="Harper Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Harper Black Belt</h3>
+                            <p class="product-price">49.00€</p>
+                        </div>
+                        <button class="add-btn" data-name="Harper Black Belt">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/2024_07_10SCUFFERS01045.jpg" alt="Monreal Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/2024_07_10SCUFFERS01063.jpg" alt="Monreal Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Monreal Burgundy Cap</h3>
+                            <p class="product-price">35.00€</p>
+                        </div>
+                        <button class="add-btn" data-name="Monreal Burgundy Cap">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/02750426700-e3.jpg" alt="Limited 2 Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/02750426700-e4.jpg" alt="Limited 2 Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Gafas De Sol Rectangulares Limited Edition</h3>
+                            <p class="product-price">49.95€</p>
+                        </div>
+                        <button class="add-btn" data-name="Gafas De Sol Rectangulares Limited Edition">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/05875324802-e1.jpg" alt="Bufanda Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/05875324802-e3.jpg" alt="Bufanda Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Bufanda Flecos</h3>
+                            <p class="product-price">22.95€</p>
+                        </div>
+                        <button class="add-btn" data-name="Bufanda Flecos">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/07902508015-M.jpg" alt="Collares Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/07902508015-A5M.jpg" alt="Collares Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Pack 3 Collares Cadena</h3>
+                            <p class="product-price">12.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Pack 3 Collares Cadena">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/03016506015-M.jpg" alt="Anillos Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/03016506015-A3M.jpg" alt="Anillos Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Pack 3 Anillos Acero</h3>
+                            <p class="product-price">12.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Pack 3 Anillos Acero">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/00859162800-a4o.jpg" alt="Crossbody Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/00859162800-a2d.jpg" alt="Crossbody Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Bolso Crossbody Básico Bolsillo</h3>
+                            <p class="product-price">17.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Bolso Crossbody Básico Bolsillo">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/09835723250-p.jpg" alt="Calcetines Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/ACCESORIOS/09835723250-a4o.jpg" alt="Calcetines Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Pack 3 Calcetines Sport</h3>
+                            <p class="product-price">9.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Pack 3 Calcetines Sport">Añadir +</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-padding container">
+            <h2 class="section-title"><span>ACCESORIOS MUJER</span></h2>
+            <div class="product-grid">
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/BurgundyAntyaBag_1_drop4.jpg" alt="Bag Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/BurgundyAntyaBag_2_drop4.jpg" alt="Bag Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Antya Burgundy Bag</h3>
+                            <p class="product-price">89.00€</p>
+                        </div>
+                        <button class="add-btn" data-name="Antya Burgundy Bag">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/2025_11_03SCUFFERS0288sem50.jpg" alt="Belt Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/2025_11_03SCUFFERS0290sem50.jpg" alt="Belt Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Shinning Light Grey Belt</h3>
+                            <p class="product-price">49.00€</p>
+                        </div>
+                        <button class="add-btn" data-name="Shinning Light Grey Belt">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/04736033700-e2.jpg" alt="Piedras Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/04736033700-e1.jpg" alt="Piedras Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Pack 4 Collares Piel Piedras</h3>
+                            <p class="product-price">22.95€</p>
+                        </div>
+                        <button class="add-btn" data-name="Pack 4 Collares Piel Piedras">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/01856024303-e1.jpg" alt="Brillos Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/01856024303-e3.jpg" alt="Brillos Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Pack 3 Anillos Metalicos Brillos</h3>
+                            <p class="product-price">15.95€</p>
+                        </div>
+                        <button class="add-btn" data-name="Pack 3 Anillos Metalicos Brillos">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/07940403700-M.jpg" alt="Banda Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/07940403700-A4M.jpg" alt="Banda Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Banda Punto Soft Touch</h3>
+                            <p class="product-price">12.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Banda Punto Soft Touch">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/07981341600-A3M.jpg" alt="Pinza Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/07981341600-A4M.jpg" alt="Pinza Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Pinza Flor</h3>
+                            <p class="product-price">6.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Pinza Flor">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/00709419400-a4o.jpg" alt="Lente Azul Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/00709419400-a1t.jpg" alt="Lente Azul Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Gafas Sol Lente Azul</h3>
+                            <p class="product-price">12.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Gafas Sol Lente Azul">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/09265423746-a2d.jpg" alt="Gorro Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/MUJER/ACCESORIOS/09265423746-a4o.jpg" alt="Gorro Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Gorro Efecto Pelo</h3>
+                            <p class="product-price">19.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Gorro Efecto Pelo">Añadir +</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>URBANSTYLE IT CORE</h4>
+                    <p>Redefiniendo el streetwear con precisión técnica.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Buscar Tienda</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Envíos y Devoluciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter / X</a></li>
+                        <li><a href="#">TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 URBANSTYLE IT CORE. All systems operational.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast-container"></div>
+
+    <script src="../JS/script.js"></script>
+</body>
+</html>

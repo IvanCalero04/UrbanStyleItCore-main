@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hombre | URBANSTYLE IT CORE</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/LogoTienda.png" alt="UrbanStyle IT Core" class="logo-img">
+            </a>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="hombre.html" class="nav-link" style="color: var(--accent-color);">Hombre</a></li> <li><a href="mujer.html" class="nav-link">Mujer</a></li>
+                    <li><a href="accesorios.html" class="nav-link">Accesorios</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <div class="cart-container" style="position: relative;">
+                    <a href="#" class="cart-icon" id="cart-toggle">
+                        🛒
+                        <span class="cart-badge" id="cart-count">0</span>
+                    </a>
+                
+                    <div class="cart-dropdown" id="cart-dropdown">
+                        <div class="cart-items" id="cart-items-list">
+                            <p class="empty-msg">SYSTEM_EMPTY...</p>
+                        </div>
+                        
+                        <div class="cart-footer">
+                            <div class="cart-total-row">
+                                <span>TOTAL:</span>
+                                <span id="cart-total-price">0.00€</span>
+                            </div>
+                            <button id="checkout-btn" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                                PROCESAR COMPRA
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero internal-hero">
+            <div class="hero-content">
+                <h1>Colección <span>Man_V2.0</span></h1>
+                <p>Equipamiento táctico para el entorno urbano.</p>
+            </div>
+        </section>
+
+        <section class="section-padding container">
+            <div class="product-grid">
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/Pick Pocket Brown Zipper.jpg" alt="Zipper Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/PickPocketBrownZipper_SEM51_2.jpg" alt="Zipper Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Pick Pocket Brown Zipper</h3>
+                            <p class="product-price">82.00€</p>
+                        </div>
+                        <button class="add-btn" data-name="Pick Pocket Brown Zipper">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/RAW_BLUE_HOODIE_1.jpg" alt="Hoodie Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/RAW_BLUE_HOODIE_2.jpg" alt="Hoodie Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Raw Blue Hoodie</h3>
+                            <p class="product-price">79.00€</p>
+                        </div>
+                        <button class="add-btn" data-name="Raw Blue Hoodie">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/curved-hoodie-midnight-blue-562350.jpg" alt="Hoodie 2 Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/curved-hoodie-midnight-blue-134437.jpg" alt="Hoodie 2 Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Curved Hoodie Midnight Blue</h3>
+                            <p class="product-price">75.00€</p>
+                        </div>
+                        <button class="add-btn" data-name="Curved Hoodie Midnight Blue">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/DenimBlueWorkJacket_Drop2_1.jpg" alt="Denim Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/DenimBlueWorkJacket_Drop2_2.jpg" alt="Denim Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Denim Blue Work Jacket</h3>
+                            <p class="product-price">119.00€</p>
+                        </div>
+                        <button class="add-btn" data-name="Denim Blue Work Jacket">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/cosmos-arc-tee-india-ink-672756.jpg" alt="Tee Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/cosmos-arc-tee-india-ink-945558.jpg" alt="Tee Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Cosmos Arc Tee India Ink</h3>
+                            <p class="product-price">45.00€</p>
+                        </div>
+                        <button class="add-btn" data-name="Cosmos Arc Tee India Ink">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/03230531251-A6M.jpg" alt="Camiseta Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/03230531251-A20M.jpg" alt="Camiseta Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Camiseta Manga Corta Gráfico Retrospective</h3>
+                            <p class="product-price">19.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Camiseta Manga Corta Gráfico Retrospective">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/01674538700-a4o.jpg" alt="Camiseta 2 Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/01674538700-b.jpg" alt="Camiseta 2 Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Camiseta Claude Monet Les Iris Jaunes Manga Corta</h3>
+                            <p class="product-price">17.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Camiseta Claude Monet Les Iris Jaunes Manga Corta">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/01426596250-a4o.jpg" alt="Football Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/01426596250-b.jpg" alt="Football Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Camiseta Manga Corta Mesh Sport Print</h3>
+                            <p class="product-price">25.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Camiseta manga corta mesh sport print">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/04048330445-e1.jpg" alt="Baggy Fit Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/04048330445-e2.jpg" alt="Baggy Fit Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Jeans Baggy Fit</h3>
+                            <p class="product-price">29.95€</p>
+                        </div>
+                        <button class="add-btn" data-name="Jeans Baggy Fit">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/05348534800-a4o.jpg" alt="Barrel Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/05348534800-b.jpg" alt="Barrel Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Jeans Barrel</h3>
+                            <p class="product-price">29.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Jeans barrel">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/00084074800-a4o.jpg" alt="Super Baggy Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/00084074800-b.jpg" alt="Super Baggy Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Jeans Super Baggy Bordado</h3>
+                            <p class="product-price">35.99€</p>
+                        </div>
+                        <button class="add-btn" data-name="Jeans Super Baggy Bordado">Añadir +</button>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="image-slider">
+                        <button class="slider-arrow prev-arrow">&#10094;</button>
+                        <div class="slider-images">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/06045433712-e1.jpg" alt="Balloon Foto 1" class="product-image active">
+                            <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/ROPA/HOMBRE/06045433712-e2.jpg" alt="Balloon Foto 2" class="product-image">
+                        </div>
+                    <button class="slider-arrow next-arrow">&#10095;</button>
+                    </div>
+
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-name">Jeans Balloon Fit</h3>
+                            <p class="product-price">39.95€</p>
+                        </div>
+                        <button class="add-btn" data-name="Jeans Balloon Fit">Añadir +</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container"><div class="copyright"><p>&copy; 2026 URBANSTYLE IT CORE.</p></div></div>
+    </footer>
+    <div id="toast-container"></div>
+    <script src="../JS/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+services:
+  api:
+    build: ./backend
+    environment:
+      PORT: "3000"
+      DATABASE_URL: "postgres://urbanstyle:urbanstyle_password@db:5432/urbanstyle"
+      JWT_SECRET: "change_this_to_a_long_random_secret"
+      PGSSL: "false"
+    depends_on:
+      - db
+    ports:
+      - "127.0.0.1:3000:3000"
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: urbanstyle
+      POSTGRES_USER: urbanstyle
+      POSTGRES_PASSWORD: urbanstyle_password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+
+volumes:
+  pgdata:
+

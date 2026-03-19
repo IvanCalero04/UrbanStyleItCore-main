@@ -1,0 +1,944 @@
+:root {
+    --bg-body: #050505;
+    --bg-card: #121212;
+    --bg-nav: rgba(5, 5, 5, 0.95);
+    --text-main: #ffffff;
+    --text-muted: #b0b0b0;
+    --accent-color: #ff9d00;
+    --accent-hover: #00d4c5;
+    --border-color: #2a2a2a;
+    --container-width: 1200px;
+    --padding-std: 2rem;
+    --border-radius: 4px;
+    --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+
+/*UTILITIES Y LAYOUT*/
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-std);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 0%; height: 100%;
+    background-color: var(--accent-color);
+    z-index: -1;
+    transition: width 0.3s ease;
+}
+
+.btn:hover {
+    color: var(--bg-body);
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--bg-body);
+}
+        
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+/*HEADER Y NAV*/
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background-color: var(--bg-nav);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%; 
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 150px;  
+    width: auto;   
+    object-fit: contain; 
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: 0;
+}
+
+.cart-icon {
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--accent-color);
+    color: var(--bg-body);
+    font-size: 0.7rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-main);
+    transition: all 0.3s ease;
+}
+
+/*HERO SECTION*/
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1f1f1f 0%, #0a0a0a 100%);
+    position: relative;
+    padding-top: 70px; /* Offset header */
+}
+
+/* Efecto de rejilla tech en el fondo */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-content {
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 1rem;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero h1 span {
+    color: var(--accent-color);
+    display: block;
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    margin-bottom: 0.5rem;
+    font-family: monospace;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+}
+
+/* =========================================
+   UPGRADE: HERO CYBERPUNK (PANTALLA DIVIDIDA)
+   ========================================= */
+
+.dual-hero {
+    /* Mantenemos tu fondo original con el offset del header */
+    height: 100vh;
+    padding-top: 70px; 
+    display: flex;
+    align-items: center;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    width: 100%;
+}
+
+/* --- Lado Izquierdo (Texto) --- */
+.left-side {
+    flex: 1;
+    text-align: left;
+    max-width: 600px;
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    font-family: monospace;
+    color: var(--accent-color);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-color);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.left-side h1 {
+    font-size: 4.5rem;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+}
+
+/* Destacar la palabra URBANO con un efecto glitch suave */
+.left-side h1 span {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent-color);
+    display: block;
+    font-size: 5rem;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.left-side p {
+    font-size: 1.1rem;
+    border-left: 2px solid var(--border-color);
+    padding-left: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Botón secundario para acompañar al principal */
+.btn-secondary {
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+}
+.btn-secondary:hover {
+    border-color: var(--text-main);
+    color: var(--text-main);
+}
+.btn-secondary::before {
+    background-color: var(--border-color);
+}
+
+/* --- Lado Derecho (Imagen Tech) --- */
+.right-side {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cyber-img {
+    max-height: 70vh;
+    width: auto;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    /* Efecto de máscara para que se funda con el fondo oscuro */
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+    filter: drop-shadow(0 0 30px rgba(0, 212, 197, 0.1)); /* Tu cyan en el fondo */
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Decoraciones en las esquinas de la imagen */
+.tech-deco {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--accent-hover); /* Cyan */
+    opacity: 0.5;
+}
+
+.deco-tl {
+    top: 5%;
+    left: 10%;
+    border-right: none;
+    border-bottom: none;
+}
+
+.deco-br {
+    bottom: 10%;
+    right: 10%;
+    border-left: none;
+    border-top: none;
+}
+
+/* =========================================
+    UPGRADE: NEWSLETTER CYBERPUNK
+   ========================================= */
+
+.cyber-newsletter {
+    background: linear-gradient(to bottom, var(--bg-body), var(--bg-card));
+    position: relative;
+    overflow: hidden;
+}
+
+/* Línea de escaneo tenue en el newsletter */
+.cyber-newsletter::before {
+    content: '';
+    position: absolute;
+    top: -100%; left: 0; width: 100%; height: 2px;
+    background: var(--accent-hover);
+    opacity: 0.3;
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
+
+.cyber-subtitle {
+    color: var(--text-muted);
+    font-family: monospace;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.input-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #000;
+    border: 1px solid var(--border-color);
+    padding-left: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--accent-color);
+}
+
+.input-prefix {
+    color: var(--accent-color);
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.cyber-newsletter .newsletter-input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-family: monospace;
+}
+
+/* --- Ajustes Responsive --- */
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    
+    .left-side {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .left-side p {
+        border-left: none;
+        border-top: 2px solid var(--border-color);
+        padding-left: 0;
+        padding-top: 1rem;
+    }
+    
+    .left-side h1, .left-side h1 span {
+        font-size: 3rem;
+    }
+    
+    .tech-deco { display: none; }
+}
+/*GRID PRODUCTOS*/
+.section-padding {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+}
+
+.section-title span {
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 204, 0.05);
+    border-color: var(--accent-color);
+}
+
+.product-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background-color: #222;
+}
+
+.product-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.product-price {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.add-btn:hover {
+    background-color: var(--text-main);
+    color: var(--bg-body);
+}
+
+/*NEWSLETTER */
+.newsletter {
+    background-color: var(--bg-card);
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.newsletter-form {
+    max-width: 500px;
+    margin: 2rem auto 0;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 1rem;
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    outline: none;
+}
+
+.newsletter-input:focus {
+    border-color: var(--accent-color);
+}
+
+/*    FOOTER     */
+footer {
+    background-color: #050505;
+    padding: 4rem 0 2rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-col h4 {
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-col ul li a:hover {
+    color: var(--accent-color);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+}
+
+/* TOAST NOTIFICACION */
+#toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 2000;
+}
+
+.toast {
+    background-color: var(--bg-card);
+    border-left: 4px solid var(--accent-color);
+    color: var(--text-main);
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    border-radius: 2px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+    animation: slideIn 0.3s ease forwards;
+}
+
+.toast.hide {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOut {
+    to { opacity: 0; transform: translateY(10px); }
+}
+
+/*Función responsive*/
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+                
+    .hamburger { display: flex; }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 70%;
+        height: calc(100vh - 70px);
+        background-color: var(--bg-card);
+        flex-direction: column;
+        padding: 2rem;
+        transition: right 0.4s ease;
+        border-left: 1px solid var(--border-color);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+}
+
+/*ESTILOS ESPECÍFICOS PÁGINAS INTERNAS*/
+
+/* Hero reducido para no ocupar toda la pantalla en sub-páginas */
+.hero.internal-hero {
+    height: 40vh; /* Mucho más bajo que el 100vh del home */
+    min-height: 300px;
+    background: radial-gradient(circle at bottom, #1f1f1f 0%, #0a0a0a 100%);
+    margin-bottom: 2rem;
+}
+
+.hero.internal-hero h1 {
+    font-size: 2.5rem; /* Título un poco más pequeño */
+}
+
+/* Layout específico para contacto (Grid de 2 columnas) */
+.contact-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-info {
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    height: 100%;
+}
+
+.contact-item {
+    margin-bottom: 2rem;
+}
+
+.contact-item h3 {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Ajuste para textareas usando las mismas clases que el newsletter */
+textarea.newsletter-input {
+    resize: vertical;
+    min-height: 120px;
+    font-family: var(--font-main);
+}
+
+/* Responsive para contacto */
+@media (max-width: 768px) {
+    .contact-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/*MENÚ DESPLEGABLE*/
+.cart-dropdown {
+    position: absolute;
+    top: 150%; /* Justo debajo del icono */
+    right: 0;
+    width: 320px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    padding: 1rem;
+    z-index: 2000;
+    
+    /* Estado inicial: Oculto */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Clase para mostrar el menú */
+.cart-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Lista de items */
+.cart-items {
+    max-height: 300px;
+    overflow-y: auto; /* Scroll si hay muchos productos */
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Scrollbar personalizada estilo Tech */
+.cart-items::-webkit-scrollbar { width: 5px; }
+.cart-items::-webkit-scrollbar-thumb { background: var(--accent-color); }
+.cart-items::-webkit-scrollbar-track { background: #000; }
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #222;
+    font-size: 0.9rem;
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-name {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.cart-item-price {
+    color: var(--accent-color);
+    font-family: monospace;
+}
+
+.remove-btn {
+    background: transparent;
+    color: #ff4d4d; /* Rojo alerta */
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0 5px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.remove-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    letter-spacing: 1px;
+}
+
+.empty-msg {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 1rem;
+    font-style: italic;
+}
+/* Contenedor del slider */
+.image-slider {
+    position: relative;
+    width: 100%;
+    /* Usamos aspect-ratio para mantener la forma perfecta en móviles y PC */
+    /* 4/5 es el estándar de retratos/ropa. Si tus fotos originales son cuadradas, usa 1/1 */
+    aspect-ratio: 4 / 5; 
+    background-color: #f4f4f5; /* El color exacto del fondo de tus fotos originales */
+    overflow: hidden;
+}
+
+.slider-images {
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilo de las imágenes */
+.slider-images .product-image {
+    display: none; /* Ocultas por defecto */
+    width: 100%;
+    height: 100%;
+    /* 'cover' asegura que la foto llene el 100% del cuadro, igual que la original */
+    object-fit: cover; 
+}
+
+/* Mostrar solo la imagen activa */
+.slider-images .product-image.active {
+    display: block;
+}
+
+/* --- El estilo de las flechas se queda igual --- */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.slider-arrow:hover { background-color: rgba(0, 0, 0, 0.9); }
+.prev-arrow { left: 0; }
+.next-arrow { right: 0; }
+
+/* =========================================
+    LOOKBOOK V1.0 - MASONRY GALLERY
+   ========================================= */
+
+.lookbook-gallery {
+    /* Crea las columnas tipo Pinterest. 1 en móvil, 3 en PC */
+    column-count: 1;
+    column-gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .lookbook-gallery { column-count: 2; }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1024px) {
+    .lookbook-gallery { column-count: 3; }
+}
+
+.lookbook-item {
+    break-inside: avoid; /* Evita que una foto se corte a la mitad entre columnas */
+    margin-bottom: 1.5rem;
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    cursor: crosshair; /* Cursor técnico */
+}
+
+.lookbook-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Efecto inicial apagado/grisáceo */
+    filter: grayscale(80%) brightness(0.7) contrast(1.2);
+    transition: filter 0.5s ease, transform 0.6s ease;
+}
+
+/* Efecto al pasar el ratón */
+.lookbook-item:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(255, 157, 0, 0.2); /* Brillo naranja */
+}
+
+.lookbook-item:hover img {
+    /* La foto cobra vida */
+    filter: grayscale(0%) brightness(1) contrast(1);
+    transform: scale(1.05); /* Pequeño zoom */
+}
+
+/* Texto superpuesto estilo código (ID de la foto) */
+.item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: var(--accent-color);
+    font-family: monospace;
+    font-size: 0.85rem;
+    opacity: 0; /* Oculto por defecto */
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.lookbook-item:hover .item-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}

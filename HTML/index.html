@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URBANSTYLE IT CORE | Moda Urbana y Tecnología</title>
+    <meta name="description" content="La fusión definitiva entre streetwear y tecnología.">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo-container">
+                <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/LogoTienda.png" alt="UrbanStyle IT Core" class="logo-img">
+            </a>
+            
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="hombre.html" class="nav-link">Hombre</a></li>
+                    <li><a href="mujer.html" class="nav-link">Mujer</a></li>
+                    <li><a href="accesorios.html" class="nav-link">Accesorios</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-icons">
+                <div class="cart-container" style="position: relative;">
+                    <a href="#" class="cart-icon" id="cart-toggle">
+                    🛒
+                    <span class="cart-badge" id="cart-count">0</span>
+                    </a>
+        
+                    <div class="cart-dropdown" id="cart-dropdown">
+                    <div class="cart-items" id="cart-items-list">
+                        <p class="empty-msg">SYSTEM_EMPTY...</p>
+                    </div>
+            
+                        <div class="cart-footer">
+                            <div class="cart-total-row">
+                                <span>TOTAL:</span>
+                                <span id="cart-total-price">0.00€</span>
+                            </div>
+                            <button id="checkout-btn" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                                PROCESAR COMPRA
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+    <section class="hero dual-hero">
+        <div class="container hero-container">
+            <div class="hero-content left-side">
+                <div class="system-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">&lt;SYSTEM_READY / ONLINE&gt;</span>
+                </div>
+                <h1>DEFINE TU CÓDIGO <span>URBANO</span></h1>
+                <p>La intersección donde la moda funcional se encuentra con la estética digital. Equipamiento diseñado para creadores del futuro.</p>
+                <div class="hero-actions">
+                    <a href="#products" class="btn btn-primary">Inicializar V1.0</a>
+                    <a href="lookbook.html" class="btn btn-secondary">Ver Lookbook</a>
+                </div>
+            </div>
+            
+            <div class="hero-image right-side">
+                <img src="https://imagenes-urbanstyle.s3.eu-west-3.amazonaws.com/IMG/LogoTienda.png" alt="Techwear Model" class="cyber-img">
+                
+                <div class="tech-deco deco-tl"></div>
+                <div class="tech-deco deco-br"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="section-padding container">
+        </section>
+
+    <section class="section-padding newsletter cyber-newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="section-title"><span>Únete al Mainframe</span></h2>
+                <p class="cyber-subtitle">Recibe drops exclusivos, códigos de acceso temprano y actualizaciones de sistema directamente en tu inbox.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Acceso concedido.');">
+                    <div class="input-wrapper">
+                        <span class="input-prefix">_></span>
+                        <input type="email" placeholder="ingresa_tu_email@aqui.com" class="newsletter-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sincronizar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>URBANSTYLE IT CORE</h4>
+                    <p>Redefiniendo el streetwear con precisión técnica.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Buscar Tienda</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Envíos y Devoluciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter / X</a></li>
+                        <li><a href="#">TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 URBANSTYLE IT CORE. All systems operational.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast-container"></div>
+
+    <script src="../JS/script.js"></script>
+</body>
+</html>
