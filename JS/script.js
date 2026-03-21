@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const idx = src.indexOf('IMG/');
             if (idx === -1) return;
 
-            const keyPath = src.slice(idx).replace(/\/+/g, '/'); // e.g. "IMG/ROPA/HOMBRE/x.jpg"
+            const keyPath = src.slice(idx).replace(/\/+/g, '/'); 
             const keyFilename = keyPath.split('/').pop();
 
             let nextSrc = null;
@@ -265,13 +265,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Botones "Añadir" en productos (delegación para contenido dinámico)
+    // Botones "Añadir" en productos (delegación para contenido dinámico)
     document.addEventListener('click', (e) => {
         const btn = e.target?.closest?.('.add-btn');
         if (!btn) return;
 
         const name = btn.getAttribute('data-name') || 'Producto';
         const priceCents = Number(btn.getAttribute('data-price-cents') || 0);
-        const price = (priceCents / 100).toFixed(2);
+
+        let price;
+        if (priceCents > 0) {
+            // Productos cargados desde la API (tienen data-price-cents en céntimos)
+            price = (priceCents / 100).toFixed(2);
+        } else {
+            // Productos del HTML estático: leer el precio del .product-price más cercano
+            const card = btn.closest('.product-info') || btn.closest('.product-card');
+            const priceEl = card?.querySelector('.product-price');
+            const priceText = priceEl?.textContent || '0';
+            price = parseFloat(priceText.replace(/[^0-9.,]/g, '').replace(',', '.')).toFixed(2);
+        }
+
         addToCart(name, price);
     });
 
