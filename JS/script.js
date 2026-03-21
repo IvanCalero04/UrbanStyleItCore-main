@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cartCountElement) {
             cartCountElement.textContent = cartState.count;
             if(cartState.count > 0) {
-                cartCountElement.classList.add('bump'); // Podrías añadir animaciones CSS aquí
+                cartCountElement.classList.add('bump');
             }
         }
 
