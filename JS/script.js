@@ -1,58 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     // =========================================
-    // CDN PARA IMAGENES (anti-carga en EC2)
-    // =========================================
-    
-    const initImageCdnRewrites = async () => {
-        const baseUrl = window.IMG_CDN_BASE_URL || document.documentElement.dataset.imgCdnBaseUrl || '';
-        const mapUrl = window.IMG_CDN_IMAGE_MAP_URL || document.documentElement.dataset.imgCdnImageMapUrl || '';
-
-        let imageMap = null;
-        if (mapUrl) {
-            try {
-                const r = await fetch(mapUrl, { headers: { 'Accept': 'application/json' } });
-                if (r.ok) imageMap = await r.json();
-            } catch (_e) {
-                imageMap = null;
-            }
-        }
-
-        if (!baseUrl && !imageMap) return; // No definido: no tocamos nada.
-        const normalizedBase = String(baseUrl || '').replace(/\/$/, '');
-
-        const imgs = document.querySelectorAll('img[src]');
-        imgs.forEach((img) => {
-            const src = img.getAttribute('src') || '';
-            const idx = src.indexOf('IMG/');
-            if (idx === -1) return;
-
-            const keyPath = src.slice(idx).replace(/\/+/g, '/'); 
-            const keyFilename = keyPath.split('/').pop();
-
-            let nextSrc = null;
-            if (imageMap && typeof imageMap === 'object') {
-                nextSrc =
-                    imageMap[keyPath] ||
-                    imageMap[keyFilename] ||
-                    imageMap[src] ||
-                    null;
-            }
-
-            if (!nextSrc && normalizedBase) {
-                nextSrc = `${normalizedBase}/${keyPath}`;
-            }
-
-            if (nextSrc) {
-                img.setAttribute('src', nextSrc);
-                img.loading = img.loading || 'lazy';
-                img.decoding = img.decoding || 'async';
-            }
-        });
-    };
-
-    initImageCdnRewrites();
-
-    // =========================================
     // 1. CONFIGURACIÓN BASE DE DATOS
     // =========================================
     const DB_KEY = 'urbanstyle_cart_v1';
@@ -71,60 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartTotalElement = document.getElementById('cart-total-price');
     const cartCountElement = document.getElementById('cart-count');
     const checkoutBtn = document.getElementById('checkout-btn');
-    const productsSection = document.getElementById('products');
-
-    // =========================================
-    // 2.1 CATÁLOGO (API)
-    // =========================================
-    const formatEur = (cents) => `€${(Number(cents || 0) / 100).toFixed(2)}`;
-
-    const renderProductsFromApi = (items) => {
-        if (!productsSection) return;
-
-        if (!Array.isArray(items) || items.length === 0) {
-            productsSection.innerHTML = '<p class="empty-msg">SYSTEM_EMPTY... <br> No hay productos disponibles.</p>';
-            return;
-        }
-
-        productsSection.innerHTML = `
-          <h2 class="section-title"><span>Productos</span></h2>
-          <div class="products-grid" id="products-grid"></div>
-        `;
-
-        const grid = document.getElementById('products-grid');
-        items.forEach((p) => {
-            const price = formatEur(p?.variant?.priceCents);
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.innerHTML = `
-              <div class="product-info">
-                <h3 class="product-title">${p.name}</h3>
-                <p class="product-desc">${p.description || ''}</p>
-                <div class="product-meta">
-                  <span class="product-price">${price}</span>
-                </div>
-                <button class="btn btn-primary add-btn" data-name="${p.name}" data-price-cents="${p?.variant?.priceCents || 0}">
-                  AÑADIR AL CARRITO
-                </button>
-              </div>
-            `;
-            grid.appendChild(card);
-        });
-    };
-
-    const loadProducts = async () => {
-        if (!productsSection) return;
-        productsSection.innerHTML = '<p class="empty-msg">Cargando catálogo...</p>';
-
-        try {
-            const res = await fetch('/api/products', { headers: { 'Accept': 'application/json' } });
-            if (!res.ok) throw new Error(`HTTP_${res.status}`);
-            const data = await res.json();
-            renderProductsFromApi(data.items);
-        } catch (e) {
-            productsSection.innerHTML = '<p class="empty-msg">ERROR: No se pudo cargar el catálogo desde la API.</p>';
-        }
-    };
 
     // =========================================
     // 2. FUNCIONES DEL NÚCLEO (DB & UI)
@@ -151,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cartCountElement) {
             cartCountElement.textContent = cartState.count;
             if(cartState.count > 0) {
-                cartCountElement.classList.add('bump');
+                cartCountElement.classList.add('bump'); // Podrías añadir animaciones CSS aquí
             }
         }
 
@@ -254,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Carga inicial
     loadCartFromDB();
-    loadProducts();
 
     // Toggle (Abrir/Cerrar) Menú Carrito
     if (cartToggleBtn) {
@@ -264,24 +156,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Botones "Añadir" en productos (delegación para contenido dinámico)
-    document.addEventListener('click', (e) => {
-        const btn = e.target?.closest?.('.add-btn');
-        if (!btn) return;
-
-        const name = btn.getAttribute('data-name') || 'Producto';
-        const priceCents = Number(btn.getAttribute('data-price-cents') || 0);
-
-        let price;
-        if (priceCents > 0) {
-            price = (priceCents / 100).toFixed(2);
-        } else {
-            const card = btn.closest('.product-info') || btn.closest('.product-card');
-            const priceEl = card?.querySelector('.product-price');
-            const priceText = priceEl?.textContent || '0';
-            price = parseFloat(priceText.replace(/[^0-9.,]/g, '').replace(',', '.')).toFixed(2);
-        }
-        addToCart(name, price);
+    // Botones "Añadir" en productos
+    document.querySelectorAll('.add-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const name = e.target.getAttribute('data-name');
+            // Hack para obtener precio del DOM
+            const priceText = e.target.previousElementSibling.querySelector('.product-price').innerText;
+            const price = priceText.replace('€', '').trim();
+            
+            addToCart(name, price);
+        });
     });
 
     // Botón Checkout
@@ -359,4 +243,220 @@ document.addEventListener('DOMContentLoaded', () => {
             changeImage(currentIndex - 1);
         });
     });
+});
+
+// =========================================
+// 5. LÓGICA DEL ÁREA PRIVADA (SIMULACIÓN)
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const loginSection = document.getElementById('login-section');
+    const dashboardSection = document.getElementById('dashboard-section');
+    const loginForm = document.getElementById('login-form');
+    const logoutBtn = document.getElementById('logout-btn');
+    const errorMsg = document.getElementById('login-error');
+
+    // Comprobar si estamos en la página privada
+    if (loginSection && dashboardSection) {
+        
+        // 1. Revisar si ya hay una sesión activa al cargar la página
+        const isLogged = sessionStorage.getItem('urbanstyle_logged_in');
+        if (isLogged === 'true') {
+            mostrarDashboard(sessionStorage.getItem('urbanstyle_user') || 'ADMIN');
+        }
+
+        // 2. Gestionar el envío del formulario de Login
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Evitar que la página recargue
+                
+                const user = document.getElementById('login-user').value;
+                const pass = document.getElementById('login-pass').value;
+
+                // SIMULACIÓN: Aceptamos admin/1234. Puedes cambiarlo.
+                if (user.toLowerCase() === 'admin' && pass === '1234') {
+                    // Login correcto
+                    sessionStorage.setItem('urbanstyle_logged_in', 'true');
+                    sessionStorage.setItem('urbanstyle_user', user.toUpperCase());
+                    mostrarDashboard(user.toUpperCase());
+                } else {
+                    // Login incorrecto
+                    errorMsg.style.display = 'block';
+                    // Animación de temblor en caso de error
+                    loginSection.style.transform = 'translateX(10px)';
+                    setTimeout(() => loginSection.style.transform = 'translateX(-10px)', 50);
+                    setTimeout(() => loginSection.style.transform = 'translateX(0)', 100);
+                }
+            });
+        }
+
+        // 3. Gestionar la desconexión
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                sessionStorage.removeItem('urbanstyle_logged_in');
+                sessionStorage.removeItem('urbanstyle_user');
+                
+                // Ocultar dashboard y mostrar login
+                dashboardSection.style.display = 'none';
+                loginSection.style.display = 'block';
+                
+                // Limpiar formulario
+                loginForm.reset();
+                errorMsg.style.display = 'none';
+                
+                // Mostrar notificación (usa la función showToast que ya tienes)
+                const container = document.getElementById('toast-container');
+                if(container) {
+                    const toast = document.createElement('div');
+                    toast.className = 'toast';
+                    toast.innerHTML = `<span>Sistema desconectado.</span>`;
+                    container.appendChild(toast);
+                    setTimeout(() => toast.remove(), 3000);
+                }
+            });
+        }
+    }
+
+    // Función auxiliar para cambiar la vista
+    function mostrarDashboard(username) {
+        loginSection.style.display = 'none';
+        dashboardSection.style.display = 'block';
+        
+        const nameDisplay = document.getElementById('user-name-display');
+        if(nameDisplay) nameDisplay.textContent = username;
+
+        // Poner la fecha actual en "Última conexión"
+        const dateDisplay = document.getElementById('last-login-date');
+        if(dateDisplay) {
+            const now = new Date();
+            dateDisplay.textContent = now.toLocaleString();
+        }
+    }
+});
+
+// =========================================
+// 5. LÓGICA DEL ÁREA PRIVADA Y MONITOR
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const loginSection = document.getElementById('login-section');
+    const dashboardSection = document.getElementById('dashboard-section');
+    const loginForm = document.getElementById('login-form');
+    const logoutBtn = document.getElementById('logout-btn');
+    const errorMsg = document.getElementById('login-error');
+
+    // Comprobar si estamos en la página privada
+    if (loginSection && dashboardSection) {
+        
+        // 1. Revisar si ya hay una sesión activa al cargar la página
+        const isLogged = sessionStorage.getItem('urbanstyle_logged_in');
+        if (isLogged === 'true') {
+            mostrarDashboard(sessionStorage.getItem('urbanstyle_user') || 'ADMIN');
+        }
+
+        // 2. Gestionar el envío del formulario de Login
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault(); 
+                
+                const user = document.getElementById('login-user').value;
+                const pass = document.getElementById('login-pass').value;
+
+                // SIMULACIÓN: Aceptamos admin/1234
+                if (user.toLowerCase() === 'admin' && pass === '1234') {
+                    sessionStorage.setItem('urbanstyle_logged_in', 'true');
+                    sessionStorage.setItem('urbanstyle_user', user.toUpperCase());
+                    mostrarDashboard(user.toUpperCase());
+                } else {
+                    // Login incorrecto
+                    errorMsg.style.display = 'block';
+                    loginSection.style.transform = 'translateX(10px)';
+                    setTimeout(() => loginSection.style.transform = 'translateX(-10px)', 50);
+                    setTimeout(() => loginSection.style.transform = 'translateX(0)', 100);
+                }
+            });
+        }
+
+        // 3. Gestionar la desconexión
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                sessionStorage.removeItem('urbanstyle_logged_in');
+                sessionStorage.removeItem('urbanstyle_user');
+                
+                dashboardSection.style.display = 'none';
+                loginSection.style.display = 'block';
+                
+                loginForm.reset();
+                errorMsg.style.display = 'none';
+                
+                // Usar tu función de toast si existe
+                const container = document.getElementById('toast-container');
+                if(container) {
+                    const toast = document.createElement('div');
+                    toast.className = 'toast';
+                    toast.innerHTML = `<span>Sistema desconectado.</span>`;
+                    container.appendChild(toast);
+                    setTimeout(() => toast.remove(), 3000);
+                }
+            });
+        }
+    }
+
+    // ====================================================
+    // FUNCIONES AUXILIARES (Cambio de vista y Monitor)
+    // ====================================================
+
+    function mostrarDashboard(username) {
+        loginSection.style.display = 'none';
+        dashboardSection.style.display = 'block';
+        
+        const nameDisplay = document.getElementById('user-name-display');
+        if(nameDisplay) nameDisplay.textContent = username;
+
+        const dateDisplay = document.getElementById('last-login-date');
+        if(dateDisplay) {
+            const now = new Date();
+            dateDisplay.textContent = now.toLocaleString();
+        }
+
+        // ¡AQUÍ SE ARRANCA EL MONITOR DE ACTIVIDAD AL ENTRAR!
+        simularUsuariosActivos();
+    }
+
+    function simularUsuariosActivos() {
+        const userCountElement = document.getElementById('active-users-count');
+        const usersListElement = document.getElementById('active-users-list');
+        const activityBar = document.getElementById('activity-bar');
+        
+        const nombresSimulados = [
+            "USER_X99", "DEV_ROOT", "GUEST_404", "OPERATOR_7", "NODE_ALPHA", 
+            "ANON_USR", "CORE_ENG", "CYBER_ST", "M_MAKI_15", "BOT_SCAN_01"
+        ];
+    
+        const actualizarDatos = () => {
+            // Generar número entre 8 y 22
+            const totalActivos = Math.floor(Math.random() * (22 - 8 + 1)) + 8;
+            if(userCountElement) userCountElement.textContent = totalActivos;
+    
+            // Cambiar barra
+            if(activityBar) activityBar.style.width = Math.floor(Math.random() * 100) + "%";
+    
+            // Mostrar 4 nombres aleatorios
+            if(usersListElement) {
+                const mezclados = nombresSimulados.sort(() => 0.5 - Math.random());
+                const seleccionados = mezclados.slice(0, 4);
+                
+                usersListElement.innerHTML = seleccionados.map(nombre => `
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <span style="color: #00ff00;">●</span> [ ${nombre} ]
+                    </div>
+                `).join('');
+            }
+        };
+    
+        // Ejecutar y repetir cada 4 segundos
+        actualizarDatos();
+        
+        // Evitar que se creen múltiples intervalos si el usuario entra y sale varias veces
+        if(window.monitorInterval) clearInterval(window.monitorInterval);
+        window.monitorInterval = setInterval(actualizarDatos, 4000);
+    }
 });

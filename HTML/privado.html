@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Seguro | URBANSTYLE IT CORE</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="../IMG/LogoTienda.png" alt="UrbanStyle IT Core" class="logo-img">
+            </a>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="hombre.html" class="nav-link">Hombre</a></li>
+                    <li><a href="mujer.html" class="nav-link">Mujer</a></li>
+                    <li><a href="accesorios.html" class="nav-link">Accesorios</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li><a href="privado.html" class="nav-link" style="color: var(--accent-color);">[ SYS.LOGIN ]</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <div class="cart-container" style="position: relative;">
+                    <a href="#" class="cart-icon" id="cart-toggle">🛒<span class="cart-badge" id="cart-count">0</span></a>
+                    </div>
+                <div class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 100px; min-height: 80vh; display: flex; align-items: center;">
+        <div class="container" style="width: 100%;">
+            
+            <div id="login-section" class="terminal-box">
+                <div class="system-status" style="justify-content: center; margin-bottom: 2rem;">
+                    <span class="status-dot" style="background-color: red; box-shadow: 0 0 10px red;"></span>
+                    <span class="status-text" style="color: red;">&lt; ACCESO RESTRINGIDO &gt;</span>
+                </div>
+                <h2 style="text-align: center; margin-bottom: 2rem; text-transform: uppercase;">Autenticación de Usuario</h2>
+                
+                <form id="login-form" style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 400px; margin: 0 auto;">
+                    <div class="input-wrapper">
+                        <span class="input-prefix">USR></span>
+                        <input type="text" id="login-user" placeholder="ID de Operario" class="newsletter-input" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">PWD></span>
+                        <input type="password" id="login-pass" placeholder="Contraseña" class="newsletter-input" required>
+                    </div>
+                    <p id="login-error" style="color: red; font-size: 0.8rem; text-align: center; display: none;">Error: Credenciales no reconocidas en el Mainframe.</p>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">INICIAR SESIÓN</button>
+                </form>
+            </div>
+
+            <div id="dashboard-section" style="display: none;">
+                <div class="system-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">&lt; CONEXIÓN ESTABLECIDA - BIENVENIDO, <span id="user-name-display">OPERARIO</span> &gt;</span>
+                </div>
+
+                <div class="activity-monitor" style="background-color: var(--bg-card); border: 1px solid var(--accent-hover); padding: 1.5rem; margin-bottom: 2rem; position: relative;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="color: var(--accent-hover); font-family: monospace; font-size: 1rem;">[ LIVE_TRAFFIC_MONITOR ]</h3>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="status-dot" style="background-color: var(--accent-hover); width: 6px; height: 6px;"></span>
+                        <span style="font-family: monospace; font-size: 0.9rem;">USUARIOS ACTIVOS: <span id="active-users-count" style="color: var(--accent-hover); font-weight: bold;">12</span></span>
+                    </div>
+                </div>
+    
+                <div id="active-users-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; font-family: monospace; font-size: 0.75rem; color: var(--text-muted);">
+                </div>
+
+                <div style="width: 100%; height: 2px; background: #1a1a1a; margin-top: 1.5rem; overflow: hidden;">
+                    <div id="activity-bar" style="width: 30%; height: 100%; background: var(--accent-hover); transition: width 2s ease;"></div>
+                    </div>
+                </div>
+                
+                <div class="contact-grid-layout" style="margin-top: 2rem;">
+                    <aside class="contact-info">
+                        <h2 style="color: var(--accent-color); margin-bottom: 1.5rem;">[ DATOS DEL NÚCLEO ]</h2>
+                        <div class="contact-item">
+                            <h3>Nivel de Acceso</h3>
+                            <p style="color: var(--text-muted);">Administrador V1.0</p>
+                        </div>
+                        <div class="contact-item">
+                            <h3>Última Conexión</h3>
+                            <p style="color: var(--text-muted);" id="last-login-date">Calculando...</p>
+                        </div>
+                        <div class="contact-item">
+                            <h3>Estado de Seguridad</h3>
+                            <p style="color: #00d4c5;">Cifrado Activo (256-bit)</p>
+                        </div>
+                        <button id="logout-btn" class="btn" style="width: 100%; margin-top: 1rem; border-color: red; color: red;">DESCONECTAR SISTEMA</button>
+                    </aside>
+
+                    <div class="form-column">
+                        <h2 class="section-title" style="text-align: left; font-size: 1.5rem; margin-bottom: 1.5rem;"><span>HISTORIAL DE PEDIDOS</span></h2>
+                        
+                        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem; margin-bottom: 1rem;">
+                            <h3 style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Orden #SYS-8902</span> <span style="color: var(--accent-color);">EN RUTA</span>
+                            </h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">1x Pick Pocket Brown Zipper<br>1x Jeans Baggy Fit</p>
+                        </div>
+
+                        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem;">
+                            <h3 style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Orden #SYS-7441</span> <span style="color: #00d4c5;">COMPLETADO</span>
+                            </h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">1x Raw Blue Hoodie</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container"><div class="copyright"><p>&copy; 2026 URBANSTYLE IT CORE.</p></div></div>
+    </footer>
+    <div id="toast-container"></div>
+    <script src="../JS/script.js"></script>
+</body>
+</html>
