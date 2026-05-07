@@ -951,7 +951,7 @@ textarea.newsletter-input {
     color: var(--accent-hover);
 }
 
-#faq-modal .terminal-body p {
+faq-modal .terminal-body p {
     margin-bottom: 5px;
     line-height: 1.4;
 }
