@@ -115,10 +115,10 @@
                 <div class="footer-col">
                     <h4>Enlaces Rápidos</h4>
                     <ul>
-                        <li><a href="#">Buscar Tienda</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Envíos y Devoluciones</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#" id="find-store-btn">Buscar Tienda</a></li>
+                        <li><a href="#" id="faq-btn">FAQs</a></li>
+                        <li><a href="#" id="shipping-btn">Envíos y Devoluciones</a></li>
+                        <li><a href="#" id="privacy-btn">Política de Privacidad</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -139,5 +139,85 @@
     <div id="toast-container"></div>
 
     <script src="../JS/script.js"></script>
+
+    <div id="map-modal" class="modal">
+        <div class="modal-content terminal-box">
+            <div class="terminal-header">
+                <span>[ SYS.MAP_SERVICE ]</span>
+                <button id="close-map" class="close-btn">&times;</button>
+            </div>
+            <div id="map-container">
+                </div>
+            <p class="product-price" style="margin-top: 10px; font-size: 0.8rem; text-align: center;">
+                UBICACIÓN DETECTADA: POLÍGONO LA TORRECILLA, CÓRDOBA
+            </p>
+        </div>
+    </div>
+    <div id="faq-modal" class="modal">
+    <div class="modal-content terminal-box" style="max-width: 700px;">
+        <div class="terminal-header">
+            <span>[ SYS.INFO_QUERY ]</span>
+            <button id="close-faq" class="close-btn">×</button>
+        </div>
+        <div class="terminal-body" style="color: var(--text-main); font-size: 0.9rem;">
+            <div style="margin-bottom: 15px;">
+                <p style="color: var(--accent-color); font-weight: bold;">> ¿Es seguro el portal de UrbanStyle?</p>
+                <p>> Respuesta: Afirmativo. Utilizamos cifrado SSL de 256 bits y todas las transacciones se procesan en entornos aislados de AWS para garantizar la integridad de los datos.</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p style="color: var(--accent-color); font-weight: bold;">> ¿Dónde se encuentra la sede física?</p>
+                <p>> Respuesta: Nuestro "Core" operativo está en el Polígono La Torrecilla (Córdoba), donde gestionamos tanto el inventario físico como los servidores locales.</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p style="color: var(--accent-color); font-weight: bold;">> ¿Tienen soporte técnico para pedidos?</p>
+                <p>> Respuesta: Sí, nuestro equipo de administradores monitoriza los pedidos 24/7. Si detectas un error 404 en tu envío, contáctanos de inmediato.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="shipping-modal" class="modal">
+    <div class="modal-content terminal-box" style="max-width: 700px;">
+        <div class="terminal-header">
+            <span>[ SYS.LOGISTICS_PROTOCOL ]</span>
+            <button id="close-shipping" class="close-btn">×</button>
+        </div>
+        <div class="terminal-body" style="color: var(--text-main); font-size: 0.9rem;">
+            <div style="margin-bottom: 15px;">
+                <p style="color: var(--accent-color); font-weight: bold;">> Protocolo de Envío (Nodo a Nodo)</p>
+                <p>> Los paquetes se procesan en nuestro centro logístico en 24h. Tiempo estimado de entrega: 48/72h laborales en toda la península. Envío gratuito en pedidos superiores a 50€ (Capa Gratuita aplicada).</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p style="color: var(--accent-color); font-weight: bold;">> Política de RMA (Devoluciones)</p>
+                <p>> Dispones de un ciclo de 30 días para solicitar una devolución. El producto debe mantener su "checksum" original (etiquetado y estado intacto). Para iniciar el proceso, solicita un ticket de soporte.</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p style="color: var(--accent-color); font-weight: bold;">> Seguimiento de Paquetes</p>
+                <p>> Una vez el paquete salga de nuestro nodo, recibirás un código de seguimiento para monitorizar la ruta del paquete en tiempo real desde tu área privada.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="privacy-modal" class="modal">
+    <div class="modal-content terminal-box" style="max-width: 700px;">
+        <div class="terminal-header">
+            <span>[ SYS.DATA_ENCRYPTION_PROTOCOL ]</span>
+            <button id="close-privacy" class="close-btn">×</button>
+        </div>
+        <div class="terminal-body" style="color: var(--text-main); font-size: 0.9rem;">
+            <div style="margin-bottom: 15px;">
+                <p style="color: var(--accent-color); font-weight: bold;">> Telemetría y Logs de Usuario</p>
+                <p>> Recopilamos estrictamente los datos necesarios (Nombre, IP, Dirección) para ejecutar el enrutamiento de tu pedido. Toda la información viaja cifrada mediante túneles TLS 1.3 hacia nuestras bases de datos aisladas en AWS.</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p style="color: var(--accent-color); font-weight: bold;">> Tokens de Sesión (Cookies)</p>
+                <p>> Empleamos "cookies" técnicas exclusivamente para mantener el estado de tu sesión y el carrito de la compra. Cero rastreadores de terceros. Cero venta de datos. Tu rastro digital es confidencial.</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <p style="color: var(--accent-color); font-weight: bold;">> Directiva GDPR (Derechos de Acceso)</p>
+                <p>> Tienes derecho de acceso, rectificación y borrado (DROP TABLE) de tus datos personales. Para ejecutar una purga completa de tu perfil en nuestros servidores, envía un comando de solicitud a nuestro canal seguro de soporte.</p>
+            </div>
+        </div>
+    </div>
+    </div>
 </body>
 </html>

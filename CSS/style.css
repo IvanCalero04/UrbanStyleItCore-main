@@ -32,7 +32,6 @@ ul { list-style: none; }
 img { max-width: 100%; display: block; }
 button { cursor: pointer; border: none; outline: none; font-family: inherit; }
 
-/*UTILITIES Y LAYOUT*/
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
@@ -81,7 +80,6 @@ button { cursor: pointer; border: none; outline: none; font-family: inherit; }
     border-color: var(--accent-hover);
 }
 
-/*HEADER Y NAV*/
 header {
     position: fixed;
     top: 0;
@@ -174,7 +172,6 @@ nav {
     transition: all 0.3s ease;
 }
 
-/*HERO SECTION*/
 .hero {
     height: 100vh;
     display: flex;
@@ -183,10 +180,9 @@ nav {
     text-align: center;
     background: radial-gradient(circle at center, #1f1f1f 0%, #0a0a0a 100%);
     position: relative;
-    padding-top: 70px; /* Offset header */
+    padding-top: 70px;
 }
 
-/* Efecto de rejilla tech en el fondo */
 .hero::after {
     content: "";
     position: absolute;
@@ -227,12 +223,7 @@ nav {
     margin-bottom: 2.5rem;
 }
 
-/* =========================================
-   UPGRADE: HERO CYBERPUNK (PANTALLA DIVIDIDA)
-   ========================================= */
-
 .dual-hero {
-    /* Mantenemos tu fondo original con el offset del header */
     height: 100vh;
     padding-top: 70px; 
     display: flex;
@@ -247,7 +238,6 @@ nav {
     width: 100%;
 }
 
-/* --- Lado Izquierdo (Texto) --- */
 .left-side {
     flex: 1;
     text-align: left;
@@ -284,7 +274,6 @@ nav {
     margin-bottom: 1.5rem;
 }
 
-/* Destacar la palabra URBANO con un efecto glitch suave */
 .left-side h1 span {
     color: transparent;
     -webkit-text-stroke: 2px var(--accent-color);
@@ -306,7 +295,6 @@ nav {
     gap: 1.5rem;
 }
 
-/* Botón secundario para acompañar al principal */
 .btn-secondary {
     border-color: var(--text-muted);
     color: var(--text-muted);
@@ -319,7 +307,6 @@ nav {
     background-color: var(--border-color);
 }
 
-/* --- Lado Derecho (Imagen Tech) --- */
 .right-side {
     flex: 1;
     position: relative;
@@ -333,10 +320,9 @@ nav {
     width: auto;
     object-fit: cover;
     border-radius: var(--border-radius);
-    /* Efecto de máscara para que se funda con el fondo oscuro */
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-    filter: drop-shadow(0 0 30px rgba(0, 212, 197, 0.1)); /* Tu cyan en el fondo */
+    filter: drop-shadow(0 0 30px rgba(0, 212, 197, 0.1));
     animation: float 6s ease-in-out infinite;
 }
 
@@ -346,12 +332,11 @@ nav {
     100% { transform: translateY(0px); }
 }
 
-/* Decoraciones en las esquinas de la imagen */
 .tech-deco {
     position: absolute;
     width: 40px;
     height: 40px;
-    border: 2px solid var(--accent-hover); /* Cyan */
+    border: 2px solid var(--accent-hover);
     opacity: 0.5;
 }
 
@@ -369,17 +354,12 @@ nav {
     border-top: none;
 }
 
-/* =========================================
-    UPGRADE: NEWSLETTER CYBERPUNK
-   ========================================= */
-
 .cyber-newsletter {
     background: linear-gradient(to bottom, var(--bg-body), var(--bg-card));
     position: relative;
     overflow: hidden;
 }
 
-/* Línea de escaneo tenue en el newsletter */
 .cyber-newsletter::before {
     content: '';
     position: absolute;
@@ -428,7 +408,6 @@ nav {
     font-family: monospace;
 }
 
-/* --- Ajustes Responsive --- */
 @media (max-width: 992px) {
     .hero-container {
         flex-direction: column;
@@ -540,7 +519,6 @@ nav {
     color: var(--bg-body);
 }
 
-/*NEWSLETTER */
 .newsletter {
     background-color: var(--bg-card);
     text-align: center;
@@ -568,7 +546,6 @@ nav {
     border-color: var(--accent-color);
 }
 
-/*    FOOTER     */
 footer {
     background-color: #050505;
     padding: 4rem 0 2rem;
@@ -605,7 +582,6 @@ footer {
     font-size: 0.8rem;
 }
 
-/* TOAST NOTIFICACION */
 #toast-container {
     position: fixed;
     bottom: 2rem;
@@ -640,7 +616,6 @@ footer {
     to { opacity: 0; transform: translateY(10px); }
 }
 
-/*Función responsive*/
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.5rem; }
                 
@@ -668,21 +643,17 @@ footer {
     }
 }
 
-/*ESTILOS ESPECÍFICOS PÁGINAS INTERNAS*/
-
-/* Hero reducido para no ocupar toda la pantalla en sub-páginas */
 .hero.internal-hero {
-    height: 40vh; /* Mucho más bajo que el 100vh del home */
+    height: 40vh;
     min-height: 300px;
     background: radial-gradient(circle at bottom, #1f1f1f 0%, #0a0a0a 100%);
     margin-bottom: 2rem;
 }
 
 .hero.internal-hero h1 {
-    font-size: 2.5rem; /* Título un poco más pequeño */
+    font-size: 2.5rem;
 }
 
-/* Layout específico para contacto (Grid de 2 columnas) */
 .contact-grid-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -709,14 +680,12 @@ footer {
     letter-spacing: 1px;
 }
 
-/* Ajuste para textareas usando las mismas clases que el newsletter */
 textarea.newsletter-input {
     resize: vertical;
     min-height: 120px;
     font-family: var(--font-main);
 }
 
-/* Responsive para contacto */
 @media (max-width: 768px) {
     .contact-grid-layout {
         grid-template-columns: 1fr;
@@ -724,10 +693,9 @@ textarea.newsletter-input {
     }
 }
 
-/*MENÚ DESPLEGABLE*/
 .cart-dropdown {
     position: absolute;
-    top: 150%; /* Justo debajo del icono */
+    top: 150%;
     right: 0;
     width: 320px;
     background-color: var(--bg-card);
@@ -736,30 +704,26 @@ textarea.newsletter-input {
     padding: 1rem;
     z-index: 2000;
     
-    /* Estado inicial: Oculto */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Clase para mostrar el menú */
 .cart-dropdown.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-/* Lista de items */
 .cart-items {
     max-height: 300px;
-    overflow-y: auto; /* Scroll si hay muchos productos */
+    overflow-y: auto;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
 }
 
-/* Scrollbar personalizada estilo Tech */
 .cart-items::-webkit-scrollbar { width: 5px; }
 .cart-items::-webkit-scrollbar-thumb { background: var(--accent-color); }
 .cart-items::-webkit-scrollbar-track { background: #000; }
@@ -791,7 +755,7 @@ textarea.newsletter-input {
 
 .remove-btn {
     background: transparent;
-    color: #ff4d4d; /* Rojo alerta */
+    color: #ff4d4d;
     font-weight: bold;
     font-size: 1.2rem;
     padding: 0 5px;
@@ -819,14 +783,12 @@ textarea.newsletter-input {
     padding: 1rem;
     font-style: italic;
 }
-/* Contenedor del slider */
+
 .image-slider {
     position: relative;
     width: 100%;
-    /* Usamos aspect-ratio para mantener la forma perfecta en móviles y PC */
-    /* 4/5 es el estándar de retratos/ropa. Si tus fotos originales son cuadradas, usa 1/1 */
     aspect-ratio: 4 / 5; 
-    background-color: #f4f4f5; /* El color exacto del fondo de tus fotos originales */
+    background-color: #f4f4f5;
     overflow: hidden;
 }
 
@@ -835,21 +797,17 @@ textarea.newsletter-input {
     height: 100%;
 }
 
-/* Estilo de las imágenes */
 .slider-images .product-image {
-    display: none; /* Ocultas por defecto */
+    display: none;
     width: 100%;
     height: 100%;
-    /* 'cover' asegura que la foto llene el 100% del cuadro, igual que la original */
     object-fit: cover; 
 }
 
-/* Mostrar solo la imagen activa */
 .slider-images .product-image.active {
     display: block;
 }
 
-/* --- El estilo de las flechas se queda igual --- */
 .slider-arrow {
     position: absolute;
     top: 50%;
@@ -868,60 +826,49 @@ textarea.newsletter-input {
 .prev-arrow { left: 0; }
 .next-arrow { right: 0; }
 
-/* =========================================
-    LOOKBOOK V1.0 - MASONRY GALLERY
-   ========================================= */
-
 .lookbook-gallery {
-    /* Crea las columnas tipo Pinterest. 1 en móvil, 3 en PC */
     column-count: 1;
     column-gap: 1.5rem;
     padding: 1rem 0;
 }
 
-/* Tablets */
 @media (min-width: 768px) {
     .lookbook-gallery { column-count: 2; }
 }
 
-/* Pantallas grandes */
 @media (min-width: 1024px) {
     .lookbook-gallery { column-count: 3; }
 }
 
 .lookbook-item {
-    break-inside: avoid; /* Evita que una foto se corte a la mitad entre columnas */
+    break-inside: avoid;
     margin-bottom: 1.5rem;
     position: relative;
     border-radius: var(--border-radius);
     overflow: hidden;
     border: 1px solid var(--border-color);
     background-color: var(--bg-card);
-    cursor: crosshair; /* Cursor técnico */
+    cursor: crosshair;
 }
 
 .lookbook-item img {
     width: 100%;
     height: auto;
     display: block;
-    /* Efecto inicial apagado/grisáceo */
     filter: grayscale(80%) brightness(0.7) contrast(1.2);
     transition: filter 0.5s ease, transform 0.6s ease;
 }
 
-/* Efecto al pasar el ratón */
 .lookbook-item:hover {
     border-color: var(--accent-color);
-    box-shadow: 0 0 20px rgba(255, 157, 0, 0.2); /* Brillo naranja */
+    box-shadow: 0 0 20px rgba(255, 157, 0, 0.2);
 }
 
 .lookbook-item:hover img {
-    /* La foto cobra vida */
     filter: grayscale(0%) brightness(1) contrast(1);
-    transform: scale(1.05); /* Pequeño zoom */
+    transform: scale(1.05);
 }
 
-/* Texto superpuesto estilo código (ID de la foto) */
 .item-overlay {
     position: absolute;
     bottom: 0;
@@ -932,7 +879,7 @@ textarea.newsletter-input {
     color: var(--accent-color);
     font-family: monospace;
     font-size: 0.85rem;
-    opacity: 0; /* Oculto por defecto */
+    opacity: 0;
     transform: translateY(10px);
     transition: all 0.4s ease;
     pointer-events: none;
@@ -943,9 +890,6 @@ textarea.newsletter-input {
     transform: translateY(0);
 }
 
-/* =========================================
-   ÁREA PRIVADA (LOGIN / DASHBOARD)
-   ========================================= */
 .terminal-box {
     max-width: 600px;
     margin: 0 auto;
@@ -957,7 +901,6 @@ textarea.newsletter-input {
     overflow: hidden;
 }
 
-/* Efecto de línea escaneando en el login */
 .terminal-box::before {
     content: '';
     position: absolute;
@@ -965,4 +908,50 @@ textarea.newsletter-input {
     background: var(--accent-color);
     opacity: 0.5;
     animation: scan 3s linear infinite;
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 700px;
+    padding: 20px;
+}
+
+#map-container iframe {
+    width: 100%;
+    height: 400px;
+    border: 1px solid var(--border-color);
+    filter: grayscale(0.5) invert(0.9) hue-rotate(180deg);
+}
+
+.close-btn {
+    background: none;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: var(--accent-hover);
+}
+
+#faq-modal .terminal-body p {
+    margin-bottom: 5px;
+    line-height: 1.4;
 }
